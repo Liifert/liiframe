@@ -10,7 +10,7 @@
   <link rel="preload" href="./fonts/teplo-font.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="./fonts/Montserrat-Variable.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="./assets/preview/eab0b.webp" as="image">
-  <link rel="stylesheet" href="./styles.css?v=20261118-8">
+  <link rel="stylesheet" href="./styles.css?v=20261126-1">
   <script type="module" src="./app.js?v=20261118-7"></script>
 </head>
 <body>
@@ -77,8 +77,8 @@
         <h2 class="section-title exhibition-title" id="exhibition-title" data-reveal>The <span>exhibition</span></h2>
         <div class="room-indicator" aria-live="polite" aria-atomic="true"><span id="room-index">01 / 15</span><span class="room-divider">—</span><span id="room-name">Социальные сети</span><span id="mobile-art-count"></span></div>
         <div id="gallery-rooms" class="gallery-rooms"></div>
-        <button class="gallery-arrow previous" type="button" aria-label="Предыдущий зал"><span aria-hidden="true">‹</span></button>
-        <button class="gallery-arrow next" type="button" aria-label="Следующий зал"><span aria-hidden="true">›</span></button>
+        <button class="gallery-arrow previous" type="button" aria-label="Предыдущий зал"><span aria-hidden="true"></span></button>
+        <button class="gallery-arrow next" type="button" aria-label="Следующий зал"><span aria-hidden="true"></span></button>
         <img class="gallery-visitors" src="./assets/preview/18f61.webp" alt="" aria-hidden="true" width="1881" height="627" loading="lazy">
         <p class="sr-only" id="gallery-hint">Нажмите на изображение внутри рамы, чтобы открыть его на весь экран.</p>
       </div>
@@ -98,7 +98,7 @@
   <dialog class="viewer" id="artwork-viewer" aria-labelledby="viewer-title">
     <div class="viewer-toolbar"><div><p id="viewer-title">Работа из выставки</p><p id="viewer-counter" class="viewer-counter"></p></div><div class="viewer-tools"><button type="button" id="zoom-out" aria-label="Уменьшить">−</button><button type="button" id="zoom-reset" aria-label="Сбросить увеличение">100%</button><button type="button" id="zoom-in" aria-label="Увеличить">+</button><button type="button" id="viewer-fullscreen" aria-label="Полноэкранный режим">⛶</button><a id="viewer-download" href="" download aria-label="Скачать изображение">↓</a><button type="button" id="viewer-close" aria-label="Закрыть просмотр">×</button></div></div>
     <div class="viewer-canvas" id="viewer-canvas"><img id="viewer-image" alt="" draggable="false"><p id="viewer-error" hidden>Не удалось загрузить изображение. Попробуйте открыть его снова.</p></div>
-    <button type="button" id="viewer-prev" class="viewer-arrow viewer-prev" aria-label="Предыдущая работа">‹</button><button type="button" id="viewer-next" class="viewer-arrow viewer-next" aria-label="Следующая работа">›</button>
+    <button type="button" id="viewer-prev" class="viewer-arrow viewer-prev" aria-label="Предыдущая работа"><span aria-hidden="true"></span></button><button type="button" id="viewer-next" class="viewer-arrow viewer-next" aria-label="Следующая работа"><span aria-hidden="true"></span></button>
     <p class="viewer-hint">← → — листать · + − — масштаб · Esc — закрыть</p>
   </dialog>
 </body>
