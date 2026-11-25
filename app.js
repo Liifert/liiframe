@@ -131,6 +131,7 @@ for(const ticket of tickets){
 }
 
 const clamp01=value=>Math.max(0,Math.min(1,value));
+const smoothStep=value=>{const t=clamp01(value);return t*t*(3-2*t);};
 function updateTicketSequence(){
   const enabled=mobileLayout.matches&&!motionPreference.matches;
   ticketTrack.classList.toggle('is-scroll-sequence',enabled);
@@ -140,11 +141,12 @@ function updateTicketSequence(){
   }
   const stickyTop=parseFloat(getComputedStyle(ticketStack).top);
   const distance=ticketTrack.offsetHeight-ticketStack.offsetHeight;
-  const position=clamp01((stickyTop-ticketTrack.getBoundingClientRect().top)/Math.max(1,distance))*tickets.length;
-  const index=Math.min(tickets.length-1,Math.floor(position));
+  const position=clamp01((stickyTop-ticketTrack.getBoundingClientRect().top)/Math.max(1,distance))*(tickets.length-1);
+  const index=Math.floor(position);
   const phase=position-index;
-  const split=index<tickets.length-1?clamp01((phase-.30)/.62):0;
-  const next=clamp01((split-.10)/.74);
+  const split=smoothStep((phase-.06)/.86);
+  const next=smoothStep((phase-.18)/.7);
+  const outgoing=1-smoothStep((phase-.25)/.65);
 
   tickets.forEach((ticket,i)=>{
     const current=i===index;
@@ -153,14 +155,14 @@ function updateTicketSequence(){
     ticket.classList.toggle('is-entering-ticket',entering);
     ticket.setAttribute('aria-hidden',String(next>=.5?!entering:!current));
     if(current){
-      ticket.style.setProperty('--upper-y',(-150*split)+'%');
-      ticket.style.setProperty('--stub-y',(460*split)+'%');
-      ticket.style.setProperty('--part-opacity',1-clamp01((split-.62)/.36));
+      ticket.style.setProperty('--upper-y',(-19*split)+'%');
+      ticket.style.setProperty('--stub-y',(98*split)+'%');
+      ticket.style.setProperty('--part-opacity',outgoing);
     }else if(entering){
       ticket.style.setProperty('--upper-y','0%');
       ticket.style.setProperty('--stub-y','0%');
       ticket.style.setProperty('--part-opacity',next);
-      ticket.style.setProperty('--arrive-scale',.95+.05*next);
+      ticket.style.setProperty('--arrive-scale',.98+.02*next);
     }
   });
 }
